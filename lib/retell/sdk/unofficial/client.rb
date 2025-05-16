@@ -7,6 +7,7 @@ require_relative 'api/retell_llm'
 require_relative 'api/phone_number'
 require_relative 'api/voice'
 require_relative 'api/concurrency'
+require_relative 'api/webhook'
 
 module Retell
   module SDK
@@ -43,6 +44,10 @@ module Retell
 
         def concurrency
           @concurrency ||= Retell::SDK::Unofficial::API::Concurrency.new(self)
+        end
+
+        def webhook
+          @webhook ||= Retell::SDK::Unofficial::API::Webhook.new(self)
         end
 
         def agents

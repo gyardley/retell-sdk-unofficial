@@ -53,6 +53,8 @@ client.phone_number.list
 client.phone_number.update
 client.phone_number.delete
 
+client.webhook.verify
+
 client.voice.retrieve
 client.voice.list
 
@@ -189,6 +191,14 @@ client.phone_number.outbound_agent = "agent-id"
 client.voice.id # an alias for client.voice.voice_id
 client.voice.name # an alias for client.voice.voice_name
 ```
+
+### Webhooks
+Unique to this library, an interface similar to Stripe's to get a message out of a webhook and verifiy its authenticity in one pass.
+```ruby
+request = client.webhook.sanitize raw_request_body, ENV["RETELL_WEBHOOK_SECRET"], request.headers["X-Retell-Signature"]
+```
+
+### Contributions
 
 Suggestions for additional quality-of-life improvements are always welcome. Pull requests are especially welcome.
 
